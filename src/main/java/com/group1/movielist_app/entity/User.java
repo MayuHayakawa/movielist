@@ -1,10 +1,15 @@
 package com.group1.movielist_app.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.OneToMany;
+// import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -13,12 +18,16 @@ public class User {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "user_sequence")
+    // @SequenceGenerator(name = "user_sequence")
     private long userId;
 
     private String email;
     private String fullName;
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<MovieList> movielists = new ArrayList<>();
+
 
     public User() {
     }
@@ -29,6 +38,7 @@ public class User {
         this.password = password;
     }
 
+    
     public long getUserId() {
         return userId;
     }
@@ -59,6 +69,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<MovieList> getMovielists() {
+        return movielists;
+    }
+
+    public void setMovielists(List<MovieList> movielists) {
+        this.movielists = movielists;
     }
 
 }

@@ -1,21 +1,38 @@
 package com.group1.movielist_app.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+// import javax.persistence.SequenceGenerator;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Movie {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    // @SequenceGenerator(name = "movie_sequence")
     private long movieId;
+    
+    private String movieImg;
     private String movieTitle;
-    private String movieGenre;
+    private String movieGenre; //A,B,C
     private String movieActor;
     private String movieDescription;
-    private int movieRating;
+    private String movieRating; //1,2,3
+
+    @ManyToOne
+    @JoinColumn(name="movielist_id")
+    private MovieList movielist;
 
     public Movie() {
     }
 
-    public Movie(String movieTitle, String movieGenre, String movieActor, String movieDescription, int movieRating) {
+    public Movie(String movieImg, String movieTitle, String movieGenre, String movieActor, String movieDescription,
+            String movieRating) {
+        this.movieImg = movieImg;
         this.movieTitle = movieTitle;
         this.movieGenre = movieGenre;
         this.movieActor = movieActor;
@@ -29,6 +46,14 @@ public class Movie {
 
     public void setMovieId(long movieId) {
         this.movieId = movieId;
+    }
+
+    public String getMovieImg() {
+        return movieImg;
+    }
+
+    public void setMovieImg(String movieImg) {
+        this.movieImg = movieImg;
     }
 
     public String getMovieTitle() {
@@ -63,12 +88,20 @@ public class Movie {
         this.movieDescription = movieDescription;
     }
 
-    public int getMovieRating() {
+    public String getMovieRating() {
         return movieRating;
     }
 
-    public void setMovieRating(int movieRating) {
+    public void setMovieRating(String movieRating) {
         this.movieRating = movieRating;
     }
-    
+
+    public MovieList getMovielist() {
+        return movielist;
+    }
+
+    public void setMovielist(MovieList movielist) {
+        this.movielist = movielist;
+    }
+
 }
