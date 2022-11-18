@@ -9,14 +9,14 @@
         <!-- <h1>Hello <span th:text="${user.fullName}"></span></h1> -->
         <h1>Hello</h1>
         <div>
-            <table th:each="movieList: ${movieLists}">
+            <table th:each="movieList: ${movieList}">
                 <thead>
                     <tr>
                         <th th:text="${movieList.movieListName}"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="movie: ${movies}">
+                    <tr th:each="movie: ${movie}">
                         <th th:text="${movie.movieImg}"></th>
                         <th th:text="${movie.movieTitle}"></th>
                         <th th:text="${movie.movieGenre}"></th>
