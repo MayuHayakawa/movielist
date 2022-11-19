@@ -8,6 +8,6 @@ import com.group1.movielist_app.entity.Movie;
 
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 
-    List<Movie> findAll();    
+    List<Movie> findAll();
 
 }

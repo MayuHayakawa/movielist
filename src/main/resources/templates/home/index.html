@@ -5,28 +5,44 @@
 </head>
 
 <body>
-    <nav th:fragment="nav">
-        <!-- <h1>Hello <span th:text="${user.fullName}"></span></h1> -->
-        <h1>Hello</h1>
-        <div>
-            <table th:each="movieList: ${movieList}">
-                <thead>
-                    <tr>
-                        <th th:text="${movieList.movieListName}"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="movie: ${movie}">
-                        <th th:text="${movie.movieImg}"></th>
-                        <th th:text="${movie.movieTitle}"></th>
-                        <th th:text="${movie.movieGenre}"></th>
-                        <th th:text="${movie.movieActor}"></th>
-                        <th th:text="${movie.movieDescription}"></th>
-                        <th th:text="${movie.movieRating}"></th>
-                    </tr>
-                </tbody>
-            </table>
+    <nav th:replace="layouts :: nav"></nav>
+    <h1>Hello *UserName*</h1>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row-of-tables">
+                <div class="custom-table">
+                    <h4>Your Movie Lists</h4>
+                    <hr>
+                    <table class="table table-bordered table-striped" th:each="movieList: ${movieList}">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th th:text="${movieList.movieListName}"></th>
+                            </tr>
+                            <tr>
+                                <th>Movie List</th>
+                                <th>img</th>
+                                <th>title</th>
+                                <th>Genre</th>
+                                <th>Actor</th>
+                                <th>Description</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="movie: ${movie}">
+                                <th th:text="${movie.movielist}"></th>
+                                <th th:text="${movie.movieImg}"></th>
+                                <th th:text="${movie.movieTitle}"></th>
+                                <th th:text="${movie.movieGenre}"></th>
+                                <th th:text="${movie.movieActor}"></th>
+                                <th th:text="${movie.movieDescription}"></th>
+                                <th th:text="${movie.movieRating}"></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </nav>
+    </div>
 </body>
 </html>

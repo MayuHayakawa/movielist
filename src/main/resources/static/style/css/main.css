@@ -1,0 +1,38 @@
+.jumbotron{
+    padding: 12px 16px;
+    background-image: url("https://images.unsplash.com/photo-1476820865390-c52aeebb9891?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80");
+    background-position: center;
+    border-radius: 8px;
+}
+
+.jumbotron h1{
+  color: white;  
+}
+
+.jumbotron p {
+  color: white;
+  margin: 0;
+}
+
+.row-of-tables{
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: row;
+}
+
+.custom-table{
+  /* border: 3px solid black; */
+  flex: 1;
+}
+
+.jumbotron div{
+  padding: 12px 16px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+h4{
+    color: white;
+    border-radius: 8px;
+    padding: 12px 16px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+}

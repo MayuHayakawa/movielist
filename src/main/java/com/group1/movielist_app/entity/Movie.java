@@ -1,12 +1,17 @@
 package com.group1.movielist_app.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 // import javax.persistence.SequenceGenerator;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Movie {
@@ -23,9 +28,16 @@ public class Movie {
     private String movieDescription;
     private String movieRating; //1,2,3
 
-    @ManyToOne
-    @JoinColumn(name="movielist_id")
-    private MovieList movielist;
+    @ManyToMany(
+        cascade=CascadeType.ALL,
+        fetch=FetchType.LAZY
+    )
+    @JoinTable(
+        name="movielist_info",
+        joinColumns = @JoinColumn(name="movieId"),
+        inverseJoinColumns = @JoinColumn(name="movieListId")
+        )
+    private List<MovieList> movielist;
 
     public Movie() {
     }
@@ -96,12 +108,19 @@ public class Movie {
         this.movieRating = movieRating;
     }
 
-    public MovieList getMovielist() {
+    public List<MovieList> getMovielist() {
         return movielist;
     }
 
-    public void setMovielist(MovieList movielist) {
+    public void setMovielist(List<MovieList> movielist) {
         this.movielist = movielist;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie [movieImg=" + movieImg + ", movieTitle=" + movieTitle + ", movieGenre=" + movieGenre
+                + ", movieActor=" + movieActor + ", movieDescription=" + movieDescription + ", movieRating="
+                + movieRating + "]";
     }
 
 }

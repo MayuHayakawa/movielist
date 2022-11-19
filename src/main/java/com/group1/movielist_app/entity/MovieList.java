@@ -1,17 +1,18 @@
 package com.group1.movielist_app.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 // import javax.persistence.SequenceGenerator;
-import javax.persistence.OneToMany;
 
 @Entity
 public class MovieList {
@@ -27,8 +28,16 @@ public class MovieList {
     @JoinColumn(name="user_id")
     private User user;
 
-    @OneToMany(mappedBy = "movielist", cascade = CascadeType.ALL)
-    private List<Movie> movies = new ArrayList<>();
+    @ManyToMany(
+        cascade=CascadeType.ALL,
+        fetch=FetchType.LAZY
+    )
+    @JoinTable(
+        name="movielist_info",
+        joinColumns = @JoinColumn(name="movieListId"),
+        inverseJoinColumns = @JoinColumn(name="movieId")
+    )
+    private List<Movie> movies;
 
 
     public MovieList() {
@@ -61,6 +70,19 @@ public class MovieList {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
+    }
+    
+    @Override
+    public String toString() {
+        return movieListName;
     }
 
 }

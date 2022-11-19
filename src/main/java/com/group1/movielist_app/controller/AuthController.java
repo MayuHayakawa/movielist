@@ -10,7 +10,6 @@ import com.group1.movielist_app.dao.AuthRepository;
 import com.group1.movielist_app.entity.User;
 
 @Controller
-
 public class AuthController {
 
     @Autowired
@@ -44,7 +43,7 @@ public class AuthController {
     public String handleRegister(User user, Model model) {
         if(user.getFullName() != null && user.getEmail() != null && user.getPassword() != null) {
             authRepository.save(user);
-            return "redirect:/register";
+            return "redirect:/";
         } else {
             return "redirect:/register";
         }

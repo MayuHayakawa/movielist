@@ -20,8 +20,7 @@ public class CreateMovieListController {
     @GetMapping("/new")
     public String displayMovieListForm(Model model) {
         model.addAttribute("movieList", new MovieList());
-
-        return "movielist/movielist";
+        return "movielist/new-movielist";
     }
 
     @PostMapping("/save")
