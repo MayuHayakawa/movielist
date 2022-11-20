@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "users")
 public class User {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     // @SequenceGenerator(name = "user_sequence")
@@ -28,7 +28,6 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<MovieList> movielists = new ArrayList<>();
 
-
     public User() {
     }
 
@@ -38,7 +37,6 @@ public class User {
         this.password = password;
     }
 
-    
     public long getUserId() {
         return userId;
     }

@@ -25,20 +25,12 @@ public class MovieList {
     private String movieListName;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany(
-        cascade=CascadeType.ALL,
-        fetch=FetchType.LAZY
-    )
-    @JoinTable(
-        name="movielist_info",
-        joinColumns = @JoinColumn(name="movieListId"),
-        inverseJoinColumns = @JoinColumn(name="movieId")
-    )
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "movielist_info", joinColumns = @JoinColumn(name = "movieListId"), inverseJoinColumns = @JoinColumn(name = "movieId"))
     private List<Movie> movies;
-
 
     public MovieList() {
     }
@@ -46,7 +38,6 @@ public class MovieList {
     public MovieList(String movieListName) {
         this.movieListName = movieListName;
     }
-
 
     public long getMovieListId() {
         return movieListId;
@@ -79,7 +70,7 @@ public class MovieList {
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
     }
-    
+
     @Override
     public String toString() {
         return movieListName;
