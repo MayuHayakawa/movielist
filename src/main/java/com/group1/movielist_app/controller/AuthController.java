@@ -1,5 +1,7 @@
 package com.group1.movielist_app.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,11 +30,12 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String handleLogin(User user, Model model) {
+    public String handleLogin(User user, Model model, HttpSession session) {
         System.out.println(user.getEmail());
         System.out.println(user.getPassword());
-
-        if(authRepository.findByEmailAndPassword(user.getEmail(), user.getPassword()) != null) {
+        User searchResult = authRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+        if (searchResult != null) {
+            session.setAttribute(SessionConstants.APP_USERID, Long.valueOf(searchResult.getUserId()));
             return "redirect:/";
         } else {
             return "redirect:/login";
@@ -41,12 +44,12 @@ public class AuthController {
 
     @PostMapping("/register")
     public String handleRegister(User user, Model model) {
-        if(user.getFullName() != null && user.getEmail() != null && user.getPassword() != null) {
+        if (user.getFullName() != null && user.getEmail() != null && user.getPassword() != null) {
             authRepository.save(user);
             return "redirect:/";
         } else {
             return "redirect:/register";
         }
     }
-    
+
 }

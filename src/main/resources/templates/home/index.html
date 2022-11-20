@@ -6,7 +6,7 @@
 
 <body>
     <nav th:replace="layouts :: nav"></nav>
-    <h1>Hello *UserName*</h1>
+    <h1>Hello [[${user.fullName}]]</h1>
     <div class="container">
         <div class="jumbotron">
             <div class="row-of-tables">
@@ -29,7 +29,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="movie: ${movie}">
+                            <tr th:each="movie: ${movieList.movies}">
                                 <th th:text="${movie.movielist}"></th>
                                 <th th:text="${movie.movieImg}"></th>
                                 <th th:text="${movie.movieTitle}"></th>
