@@ -31,7 +31,7 @@ public class CreateMovieListController {
     }
 
     @PostMapping("/save")
-    public String createMovieList(MovieList movieList, Model model, HttpSession httpSession) {
+    public String createMovieList(MovieList movieList, HttpSession httpSession) {
         Long userId = (Long) httpSession.getAttribute(SessionConstants.APP_USERID);
         movieList.setUser(userRepositry.getReferenceById(userId));
         movieListRepository.save(movieList);

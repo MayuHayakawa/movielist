@@ -19,7 +19,6 @@
                                 <th th:text="${movieList.movieListName}"></th>
                             </tr>
                             <tr>
-                                <th>Movie List</th>
                                 <th>img</th>
                                 <th>title</th>
                                 <th>Genre</th>
@@ -28,9 +27,8 @@
                                 <th>Rating</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr th:each="movie: ${movieList.movies}">
-                                <th th:text="${movie.movielist}"></th>
+                        <tbody th:each="movie: ${movieList.movies}">
+                            <tr>
                                 <th th:text="${movie.movieImg}"></th>
                                 <th th:text="${movie.movieTitle}"></th>
                                 <th th:text="${movie.movieGenre}"></th>
