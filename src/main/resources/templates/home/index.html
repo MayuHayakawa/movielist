@@ -25,16 +25,18 @@
                                 <th>Actor</th>
                                 <th>Description</th>
                                 <th>Rating</th>
+                                <th>Edit</th>
                             </tr>
                         </thead>
-                        <tbody th:each="movie: ${movieList.movies}">
+                        <tbody th:each="movie: ${movieList.movies}" th:object="${movie}">
                             <tr>
-                                <th th:text="${movie.movieImg}"></th>
-                                <th th:text="${movie.movieTitle}"></th>
-                                <th th:text="${movie.movieGenre}"></th>
-                                <th th:text="${movie.movieActor}"></th>
-                                <th th:text="${movie.movieDescription}"></th>
-                                <th th:text="${movie.movieRating}"></th>
+                                <th th:text="*{movieImg}"></th>
+                                <th th:text="*{movieTitle}"></th>
+                                <th th:text="*{movieGenre}"></th>
+                                <th th:text="*{movieActor}"></th>
+                                <th th:text="*{movieDescription}"></th>
+                                <th th:text="*{movieRating}"></th>
+                                <th><a th:href="@{/edit-movie/{id}(id=*{movieId})}">Edit</a></th>
                             </tr>
                         </tbody>
                     </table>

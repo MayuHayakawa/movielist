@@ -13,7 +13,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 // import javax.persistence.SequenceGenerator;
 
+import lombok.Data;
+
 @Entity
+@Data
 public class Movie {
 
     @Id
@@ -38,89 +41,5 @@ public class Movie {
         inverseJoinColumns = @JoinColumn(name="movieListId")
         )
     private List<MovieList> movielist;
-
-    public Movie() {
-    }
-
-    public Movie(String movieImg, String movieTitle, String movieGenre, String movieActor, String movieDescription,
-            String movieRating) {
-        this.movieImg = movieImg;
-        this.movieTitle = movieTitle;
-        this.movieGenre = movieGenre;
-        this.movieActor = movieActor;
-        this.movieDescription = movieDescription;
-        this.movieRating = movieRating;
-    }
-
-    public long getMovieId() {
-        return movieId;
-    }
-
-    public void setMovieId(long movieId) {
-        this.movieId = movieId;
-    }
-
-    public String getMovieImg() {
-        return movieImg;
-    }
-
-    public void setMovieImg(String movieImg) {
-        this.movieImg = movieImg;
-    }
-
-    public String getMovieTitle() {
-        return movieTitle;
-    }
-
-    public void setMovieTitle(String movieTitle) {
-        this.movieTitle = movieTitle;
-    }
-
-    public String getMovieGenre() {
-        return movieGenre;
-    }
-
-    public void setMovieGenre(String movieGenre) {
-        this.movieGenre = movieGenre;
-    }
-
-    public String getMovieActor() {
-        return movieActor;
-    }
-
-    public void setMovieActor(String movieActor) {
-        this.movieActor = movieActor;
-    }
-
-    public String getMovieDescription() {
-        return movieDescription;
-    }
-
-    public void setMovieDescription(String movieDescription) {
-        this.movieDescription = movieDescription;
-    }
-
-    public String getMovieRating() {
-        return movieRating;
-    }
-
-    public void setMovieRating(String movieRating) {
-        this.movieRating = movieRating;
-    }
-
-    public List<MovieList> getMovielist() {
-        return movielist;
-    }
-
-    public void setMovielist(List<MovieList> movielist) {
-        this.movielist = movielist;
-    }
-
-    @Override
-    public String toString() {
-        return "Movie [movieImg=" + movieImg + ", movieTitle=" + movieTitle + ", movieGenre=" + movieGenre
-                + ", movieActor=" + movieActor + ", movieDescription=" + movieDescription + ", movieRating="
-                + movieRating + "]";
-    }
 
 }

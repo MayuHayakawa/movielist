@@ -14,7 +14,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 // import javax.persistence.SequenceGenerator;
 
+import lombok.Data;
+
 @Entity
+@Data
 public class MovieList {
 
     @Id
@@ -31,45 +34,6 @@ public class MovieList {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "movielist_info", joinColumns = @JoinColumn(name = "movieListId"), inverseJoinColumns = @JoinColumn(name = "movieId"))
     private List<Movie> movies;
-
-    public MovieList() {
-    }
-
-    public MovieList(String movieListName) {
-        this.movieListName = movieListName;
-    }
-
-    public long getMovieListId() {
-        return movieListId;
-    }
-
-    public void setMovieListId(long movieListId) {
-        this.movieListId = movieListId;
-    }
-
-    public String getMovieListName() {
-        return movieListName;
-    }
-
-    public void setMovieListName(String movieListName) {
-        this.movieListName = movieListName;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Movie> getMovies() {
-        return movies;
-    }
-
-    public void setMovies(List<Movie> movies) {
-        this.movies = movies;
-    }
 
     @Override
     public String toString() {

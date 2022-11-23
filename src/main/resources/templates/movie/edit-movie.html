@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="layouts :: head (pageTitle = 'Edit Movie')">
+</head>
+
+<body>
+    <nav th:replace="layouts :: nav"></nav>
+    <div class="container">
+        <form th:action="@{/edit-movie}" th:object="${editMovieForm}" method="POST">
+            <fieldset>
+                <legend>Edit Movie List</legend>
+                <input type="hidden" th:field="*{movieId}" th:value="*{movieId}">
+                Img: <input type="text" th:field="*{movieImg}" th:value="*{movieImg}"><br>
+                Title: <input type="text" th:field="*{movieTitle}" th:value="*{movieTitle}"><br>
+                Genre: <select th:field="*{movieGenre}" th:value="*{movieGenre}"></select><br>
+                Actor: <input type="text" th:field="*{movieActor}" th:value="*{movieActor}"><br>
+                Description: <input type="text" th:field="*{movieDescription}" th:value="*{movieDescription}"><br>
+                Rating: <select th:field="*{movieRating}" th:value="*{movieRating}"></select><br>
+                <input type="submit" value="update">
+            </fieldset>
+        </form>
+        <a th:href="@{/}">Back to Home page</a>
+        </form>
+    </div>
+</body>
+</html>
