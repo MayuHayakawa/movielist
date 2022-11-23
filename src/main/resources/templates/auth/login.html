@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="layouts :: head (pageTitle = 'Login')">
+</head>
+
+<body>
+    <div class="container register-main-wrapper">
+        <video class="video-bg" src="mov/movie-bg.mov" poster="img/tyson-moultrie-BQTHOGNHo08-unsplash-min.jpeg"
+            autoplay="" loop="" muted=""></video>
+        <header class="container register-header-wrapper mx-5">
+            <a href="/register"><img src="img/movielist-name.png" alt=""></a>
+            <a href="/register" class="btn btn-danger btn-block" type="submit">Sign Up</a>
+        </header> 
+
+        <div id="particle-container">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+
+        <div class="auth-page">
+            <form action="/login" method="POST" class="register-form-wrapper card rounded-3 text-black">
+                <!-- <i class="fa-solid fa-film txtgradient"></i>
+                <h2>Welcome to Movie Playlist Maker</h2> -->
+                <fieldset>
+                    <legend class="mb-3 display-6">
+                        Login
+                    </legend>
+
+                    <div class="form-group mb-3">
+                        <label for="" class="mb-1">Email</label>
+                        <input class="form-control" type="email" th:field="${user.email}">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="" class="mb-1">Password</label>
+                        <input class="form-control" type="password" th:field="${user.password}">
+                    </div>
+                    <button class="btn btn-dark btn-block mb-3">Login</button>
+                    <div class="links">
+                        <a href="/register">New to Movielist? Sign Up Now!</a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

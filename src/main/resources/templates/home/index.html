@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="layouts :: head (pageTitle = 'Home')">
+</head>
+
+<body>
+    <header th:replace="layouts :: header"></header>
+
+
+    <div id="banner-wrapper">
+        <div id="banner-closeheadwrapper">
+            <button type="button" class="btn-close btn-close-white m-3" aria-label="Close"
+                onclick="closebanner('banner-wrapper')" id="banner-closeinside"></button>
+        </div>
+        <div class="my-3 mx-5" id="banner-txtwrapper">
+            <h4 class="display-6">Hello [[${user.fullName}]]!</h4>
+            <p class="lead">Let's Create Your Own Playlist.</p>
+            <a href="movielist/new" type="button" class="btn btn-outline-light">Get Started</a>
+        </div>
+    </div>
+
+
+    <div>
+        <div class="row main-userandplaylist-wrapper m-0 px-3 py-3">
+            <div class=" main-user-wrapper col-md-3 py-3">
+                <div class="accountsec">
+                    <div class="account-circle mb-3">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h2>[[${user.fullName}]]</h2>
+                    <p><span><i class="fa-solid fa-location-dot"></i></span> Canada</p>
+                    <a href="account-setting.html" class="btn btn-dark text-white">Account Setting</a>
+
+                </div>
+            </div>
+            <div class="main-playlist-wrapper col-md-9 p-3">
+                <div class="row-of-tables">
+                    <div class="custom-table">
+                        <div class="row pe-3">
+                            <h4>Explore</h4>
+                            <div></div>
+                        </div>
+                        <hr>
+
+                            <table class="table table-borderless table-custom-spacing" th:each="movieList: ${movieList}">
+                                <thead class="thead-dark">
+                                    <tr class="h2">
+                                            <th th:text="${movieList.movieListName}"></th>                                     <span>&nbsp;&nbsp;<a href="movie/new"><i class="fas fa-edit text-primary"></i></a></span>
+    
+                                    </tr>
+                                    <tr>
+                                        <th>Artwork</th>
+                                        <th>Title</th>
+                                        <th>Genre</th>
+                                        <th>Actor</th>
+                                        <th>Description</th>
+                                        <th>Rating</th>
+                                    </tr>
+                                </thead>
+                                <tbody th:each="movie: ${movieList.movies}">
+                                    <tr>
+                                        <th>
+                                            <img src="../../images/gtvglogo.png" th:attr="src=${movie.movieImg},title=#{logo},alt=#{logo}" width="70" height="120" />
+                                        </th>
+                                        <th th:text="${movie.movieTitle}"></th>
+                                        <th th:text="${movie.movieGenre}"></th>
+                                        <th th:text="${movie.movieActor}"></th>
+                                        <th th:text="${movie.movieDescription}"></th>
+                                        <th th:text="${movie.movieRating}"></th>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <footer th:replace="layouts :: footer"></footer>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="layouts :: head (pageTitle = 'Register')">
+</head>
+
+<body>
+    <div class="container register-main-wrapper">
+        <video class="video-bg" src="mov/movie-bg.mov" poster="img/tyson-moultrie-BQTHOGNHo08-unsplash-min.jpeg"
+            autoplay="" loop="" muted=""></video>   
+            <header class="container register-header-wrapper mx-5">
+                <a href="/register"><img src="img/movielist-name.png" alt=""></a>
+                <a href="/login" class="btn btn-danger btn-block" type="submit">Sign In</a>
+            </header> 
+
+            <div id="particle-container">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+
+        <div class="row">
+            <div class="col-md-6 register-copy-wrapper">
+                <h1>Create your favourite movie playlist and share with everyone.</h1>
+                <p class="lead">Ready to start? Enter your name, email and password to create your account for free.</p>
+            </div>
+            <div class="auth-page col-md-6">
+                <form action="/register" method="POST" class="register-form-wrapper card rounded-3 text-black">
+                    <fieldset>
+                        <legend class="mb-3 display-6">
+                            Register
+                        </legend>
+
+                        <div class="form-group mb-3">
+                            <label for="" class="mb-1">Full Name</label>
+                            <input class="form-control" type="text" th:field="${user.fullName}">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="" class="mb-1">Email</label>
+                            <input class="form-control" type="email" th:field="${user.email}">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="" class="mb-1">Password</label>
+                            <input class="form-control" type="password" th:field="${user.password}">
+                        </div>
+
+                        <div class="mb-3 links">
+                            <a class="redirect-link" href="/login">Do You Have an Account? Sign In from Here.</a>
+                        </div>
+
+                        <button class="btn btn-dark btn-block mb-3" type="submit">Register</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
