@@ -6,15 +6,17 @@
 
 <body>
     <header th:replace="layouts :: header"></header>
-    <div class="container">        
-        <form action="/movielist/save" method="POST">
+    <div class="createmovie-wrapper py-5 px-5">        
+        <form action="/movielist/save" method="POST" class="register-form-wrapper card rounded-3 text-black" style="height: 40vh;">
             <fieldset>
-                <legend>Create MovieList</legend>
-                <div class="form-group mb-2">
-                    <label for="movieListName" class="mb-2">Movie List Name: </label>
+                <legend class="mb-3 display-6">
+                    Create MovieList
+                </legend>
+                <div class="form-group mb-3">
+                    <label for="movieListName" class="mb-1">Movie List Name: </label>
                     <input class="form-control" type="text" th:field="${movieList.movieListName}">
                 </div>
-                <button type="submit" class="btn btn-dark">Create</button>
+                <button type="submit" class="btn btn-dark btn-block mb-3">Create</button>
             </fieldset>
         </form>
     </div>

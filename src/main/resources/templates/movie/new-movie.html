@@ -6,13 +6,16 @@
 
 <body>
     <header th:replace="layouts :: header"></header>
-    <div class="container">     
-        <form action="/movie/save" method="POST" th:object="${movie}">
+
+    <div class="editmovie-wrapper py-5 px-5">     
+        <form action="/movie/save" method="POST" th:object="${movie}" class="register-form-wrapper card rounded-3 text-black" style="height: unset;width:660px;">
         <!-- <form action="/movie/save" method="POST"> -->
             <fieldset>
-                <legend>Edit Movie List</legend>
-                <div class="form-group mb-2">
-                    <label class="mb-2">Select Movie List(s): </label>
+                <legend class="mb-3 display-6">
+                    Edit Movie List
+                </legend>
+                <div class="form-group mb-3">
+                    <label class="mb-1">Select Movie List(s): </label>
                     <br>
                     <select class="form-control" multiple="multiple" th:field="*{movielist}">
                         <option
@@ -21,16 +24,16 @@
                         th:text="${movieList}"></option>
                     </select>
                 </div>
-                <div class="form-group mb-2">
-                    <label for="movieImg" class="mb-2">Artwork: </label>
+                <div class="form-group mb-3">
+                    <label for="movieImg" class="mb-1">Artwork: </label>
                     <input class="form-control" type="text" th:field="${movie.movieImg}">
                 </div>
-                <div class="form-group mb-2">
-                    <label for="movieTitle" class="mb-2">Title: </label>
+                <div class="form-group mb-3">
+                    <label for="movieTitle" class="mb-1">Title: </label>
                     <input class="form-control" type="text" th:field="${movie.movieTitle}">
                 </div>
-                <div class="form-group mb-2">
-                    <label class="mb-2">Genre: </label>
+                <div class="form-group mb-3">
+                    <label class="mb-1">Genre: </label>
                     <br>
                     <select class="form-control" th:field="${movie.movieGenre}">
                         <option th:value="Comedy">Comedy</option>
@@ -40,16 +43,16 @@
                         <option th:value="Other">Other</option>
                     </select>
                 </div>
-                <div class="form-group mb-2">
-                    <label for="movieActor" class="mb-2">Actor: </label>
+                <div class="form-group mb-3">
+                    <label for="movieActor" class="mb-1">Actor: </label>
                     <input class="form-control" type="text" th:field="${movie.movieActor}">
                 </div>
-                <div class="form-group mb-2">
-                    <label for="movieDescription" class="mb-2">Description: </label>
+                <div class="form-group mb-3">
+                    <label for="movieDescription" class="mb-1">Description: </label>
                     <input class="form-control" type="text" th:field="${movie.movieDescription}">
                 </div>
-                <div class="form-group mb-2">
-                    <label class="mb-2">Rating: </label>
+                <div class="form-group mb-3">
+                    <label class="mb-1">Rating: </label>
                     <br>
                     <select class="form-control" th:field="${movie.movieRating}">
                         <option th:value="1">1</option>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="layouts :: head (pageTitle = 'Account')">
+</head>
+
+<body>
+    <header th:replace="layouts :: header"></header>
+    <div class="container">
+        <div class=" main-user-wrapper py-3">
+            <div class="accountsec">
+                <div class="account-circle mb-3">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <h2 class="display-6">[[${user.fullName}]]</h2>
+                <p><span><i class="fa-solid fa-location-dot"></i></span> Canada</p>
+                <a class="dropdown-item" type="button" href="/logout">Sign Out</a>
+                <button type="button" class="btn btn-danger header-delete-btn" data-bs-toggle="modal"
+                    data-bs-target="#myModalLabel" style="
+                    width: unset;">
+                    Delete Account
+                </button>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="layouts :: footer"></footer>
+</body>
+
+</html>

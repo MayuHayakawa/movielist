@@ -29,6 +29,8 @@
             document.getElementById(target).style.display = 'none';
         }
     </script>
+    <!-- JS Gallery -->
+    <script th:src="@{/js/app.js}" defer></script>
 </head>
 
 <body>
@@ -36,7 +38,7 @@
     <header th:fragment="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid mx-5 p-0">
-                <a class="navbar-brand" href="/"><img src="img/movielist-name.png" alt=""></a>
+                <a class="navbar-brand" href="/"><img th:src="@{/img/movielist-name.png}" alt=""></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -44,14 +46,17 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="movielist/new">Create New Playlist</a>
+                            <!-- <a class="nav-link" href="movielist/new">Create New Playlist</a> -->
+                            <a class="nav-link" th:href="@{/movielist/new}">Create New Playlist</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="movie/new">Edit Playlist</a>
+                            <!-- <a class="nav-link" href="movie/new">Edit Playlist</a> -->
+                            <a class="nav-link" th:href="@{/movie/new}">Edit Playlist</a>
                         </li>
                         <span class="vr" id="header_vrmargin"></span>
                         <li class="nav-item">
@@ -65,10 +70,10 @@
                                 <i class="fa-solid fa-user"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end p-2">
-                                <li><a class="dropdown-item" href="#">Account Setting</a></li>
-                                <li><a class="dropdown-item" href="/login">Sign Out</a></li>
+                                <li><a class="dropdown-item" href="/account">Account</a></li>
+                                <li><a class="dropdown-item" href="/logout">Sign Out</a></li>
                                 <li>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-danger header-delete-btn" data-bs-toggle="modal"
                                         data-bs-target="#myModalLabel">
                                         Delete Account
                                     </button>
@@ -100,8 +105,8 @@
                         <div class="sadImage"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <a href="/" type="button" class="btn btn-danger">Delete Account</a>
+                        <button type="button" class="btn btn-secondary header-delete-btn" data-bs-dismiss="modal" style="width:unset;">Cancel</button>
+                        <a href="/register" type="button" class="btn btn-danger header-delete-btn">Delete Account</a>
                     </div>
                 </div>
             </div>

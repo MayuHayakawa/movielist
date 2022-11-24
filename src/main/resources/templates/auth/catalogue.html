@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="layouts :: head (pageTitle = 'Home')">
+</head>
+
+<body>
+
+    <header th:replace="layouts :: header"></header>
+    <div id="catalogue-search-wrapper" class="bg-dark py-3">
+        <h1>Movie Catalogue</h1>
+        <p class="lead">Search and get information of movie from catalogue.</p>
+        <form id="form">
+            <div class="input-group">
+                <input type="text" id="search" class="form-control search" placeholder="Enter Movie Title"
+                    aria-label="Enter Movie Title" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-danger" id="button-addon2">Button</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <main id="main"></main>
+    <footer th:replace="layouts :: footer"></footer>
+
+</body>
+
+</html>

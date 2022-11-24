@@ -7,47 +7,94 @@
 <body>
     <header th:replace="layouts :: header"></header>
 
-
     <div id="banner-wrapper">
         <div id="banner-closeheadwrapper">
             <button type="button" class="btn-close btn-close-white m-3" aria-label="Close"
                 onclick="closebanner('banner-wrapper')" id="banner-closeinside"></button>
         </div>
-        <div class="my-3 mx-5" id="banner-txtwrapper">
+        <div class="my-4 mx-5" id="banner-txtwrapper">
             <h4 class="display-6">Hello [[${user.fullName}]]!</h4>
             <p class="lead">Let's Create Your Own Playlist.</p>
             <a href="movielist/new" type="button" class="btn btn-outline-light">Get Started</a>
         </div>
     </div>
 
-
     <div>
-        <div class="row main-userandplaylist-wrapper m-0 px-3 py-3">
-            <div class=" main-user-wrapper col-md-3 py-3">
+        <div class="row main-userandplaylist-wrapper m-0 px-5 py-3">
+            <div class=" main-user-wrapper col-md-3 px-3 py-3 mb-3">
                 <div class="accountsec">
                     <div class="account-circle mb-3">
                         <i class="fa-solid fa-user"></i>
                     </div>
                     <h2>[[${user.fullName}]]</h2>
                     <p><span><i class="fa-solid fa-location-dot"></i></span> Canada</p>
-                    <a href="account-setting.html" class="btn btn-dark text-white">Account Setting</a>
-
+                    <a href="/account" class="btn btn-dark text-white">View Account</a>
                 </div>
             </div>
-            <div class="main-playlist-wrapper col-md-9 p-3">
-                <div class="row-of-tables">
-                    <div class="custom-table">
-                        <div class="row pe-3">
-                            <h4>Explore</h4>
-                            <div></div>
+            <div class="col-md-9 p-3">
+                <div class="main-menubanner-wrapper py-2">
+                    <div class="main-menubanner-upper-iconwrapper d-flex align-items-center">
+                        <h3>What will you do today?</h3>
+                    </div>
+                    <div class="main-menubanner-under-iconwrapper">
+                        <div id="menuicon-1st-circle">
+                            <a href="/movielist/new" class="main-menubanner-iconwrapper" type="button">
+                                <div>
+                                    <i class="fa-solid fa-square-plus"></i>
+                                </div>
+                            </a>
+                            <p>New Playlist</p>
                         </div>
-                        <hr>
-
-                            <table class="table table-borderless table-custom-spacing" th:each="movieList: ${movieList}">
+                        <div id="menuicon-2st-circle">
+                            <a href="/movie/new" class="main-menubanner-iconwrapper" type="button">
+                                <div>
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </div>
+                            </a>
+                            <p>Edit Playlist</p>
+                        </div>
+                        <div id="menuicon-3st-circle">
+                            <a href="/catalogue" class="main-menubanner-iconwrapper" type="button">
+                                <div>
+                                    <i class="fa-solid fa-photo-film"></i>
+                                </div>
+                            </a>
+                            <p>Catalogue</p>
+                        </div>
+                        <div id="menuicon-4st-circle">
+                            <a href="https://github.com/M2-0922/" class="main-menubanner-iconwrapper" type="button">
+                                <div>
+                                    <i class="fa-brands fa-github"></i>
+                                </div>
+                            </a>
+                            <p>Github</p>
+                        </div>
+                        <div id="menuicon-5st-circle">
+                            <a href="/account" class="main-menubanner-iconwrapper" type="button">
+                                <div>
+                                    <i class="fa-solid fa-chalkboard-user"></i>
+                                </div>
+                            </a>
+                            <p>Acount Info</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-playlist-wrapper">
+                    <div class="row-of-tables">
+                        <div class="custom-table">
+                            <hr>
+                            <h4 class="pb-3 lead"><span><i class="fa-solid fa-arrow-trend-up"></i></span>&nbsp;&nbsp;Latest Playlist</h4>
+                            <table class="table table-borderless table-custom-spacing main-table-wrapper p-3"
+                                th:each="movieList: ${movieList}">
                                 <thead class="thead-dark">
-                                    <tr class="h2">
-                                            <th th:text="${movieList.movieListName}"></th>                                     <span>&nbsp;&nbsp;<a href="movie/new"><i class="fas fa-edit text-primary"></i></a></span>
-    
+                                    <tr class="h3">
+                                        <th class="main-playlist-titletr" th:text="${movieList.movieListName}"></th>
+                                        <!-- <span>
+                                        &nbsp;&nbsp;
+                                        <a href="movie/new">
+                                        <i class="fas fa-edit text-primary"></i>
+                                        </a>
+                                    </span> -->
                                     </tr>
                                     <tr>
                                         <th>Artwork</th>
@@ -61,7 +108,9 @@
                                 <tbody th:each="movie: ${movieList.movies}">
                                     <tr>
                                         <th>
-                                            <img src="../../images/gtvglogo.png" th:attr="src=${movie.movieImg},title=#{logo},alt=#{logo}" width="70" height="120" />
+                                            <img src="../../images/gtvglogo.png"
+                                                th:attr="src=${movie.movieImg},title=#{logo},alt=#{logo}" width="70"
+                                                height="120" />
                                         </th>
                                         <th th:text="${movie.movieTitle}"></th>
                                         <th th:text="${movie.movieGenre}"></th>
@@ -76,12 +125,15 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
+    </div>
 
-    
+
 
     <footer th:replace="layouts :: footer"></footer>
+
 
 </body>
 
